@@ -7,7 +7,7 @@ import red from "./red.json" assert {type: "json"}
 import yellow from "./yellow.json" assert {type: "json"}
 import blue from "./blue.json" assert {type: "json"}
 import green from "./green.json" assert {type: "json"}
-import purple from "./purple.json" assert {type: "json"}
+// import purple from "./purple.json" assert {type: "json"}
 
 const insertData = async () => {
     //reset database
@@ -18,7 +18,7 @@ const insertData = async () => {
     await Cards.insertMany(yellow)
     await Cards.insertMany(blue)
     await Cards.insertMany(green)
-    await Cards.insertMany(purple)
+    // await Cards.insertMany(purple)
 
     db.close()
 }
