@@ -1,6 +1,7 @@
+
 import {Router} from "express"
-import Cards from "../models/Structure.js"
+import digimon from "./card.js"
 const router = Router()
-router.get("/", (req, res) => res.send("This is the api root!"))
-router.use("/digimon", Cards)
+// router.get("/", (req, res) => res.send("This is the api root!"))
+router.use("/digimon", digimon)
 export default router

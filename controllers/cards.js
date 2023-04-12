@@ -1,4 +1,5 @@
-import Cards from "../model/Structure.js"
+import Cards from "../models/Structure.js"
+
 export const getCards = async (req, res) => {
     try {
         const cards = await Cards.find()
@@ -12,7 +13,7 @@ export const getCards = async (req, res) => {
 export const getCard = async (req, res) => {
     try {
         const {id} = req.params
-        const card = await Card.findById(id)
+        const card = await Cards.findById(id)
         res.json(card)
     } catch (error) {
         console.log(error.message)
@@ -21,7 +22,7 @@ export const getCard = async (req, res) => {
 }
 export const createCharacter = async (req, res) => {
     try {
-        const card = new Card(req.body)
+        const card = new Cards(req.body)
         await character.save()
         res.status(201).json(card)
     } catch (error) {
@@ -31,13 +32,13 @@ export const createCharacter = async (req, res) => {
 }
 export const updateCard = async (req, res) => {
     const {id} = req.params
-    const card = await Card.findByIdAndUpdate(id,)
+    const card = await Cards.findByIdAndUpdate(id,)
     res.status(200).json(card)
 }
 export const deleteCard = async (req, res) => {
     try {
         const {id} = req.params
-        const deleted = await Card.findByIdAndDelete(id,)
+        const deleted = await Cards.findByIdAndDelete(id,)
         res.status(200).send("Card Deleted!")
     } catch (error) {
         console.log(error.message)
