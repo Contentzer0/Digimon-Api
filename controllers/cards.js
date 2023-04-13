@@ -20,6 +20,15 @@ export const getCard = async (req, res) => {
         res.status(500).json({error: error.message})
     }
 }
+export const getColor = async (req, res) => {
+    try {
+        const card = await Cards.find({"color": `${req.params.color}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
 export const createCharacter = async (req, res) => {
     try {
         const card = new Cards(req.body)
