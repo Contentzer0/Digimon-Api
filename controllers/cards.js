@@ -58,7 +58,7 @@ export const getLevel = async (req, res) => {
 }
 export const getPlayCost = async (req, res) => {
     try {
-        const card = await Cards.find({"playcost": `${req.params.playcost}`})
+        const card = await Cards.find({"play_cost": `${req.params.playcost}`})
         res.json(card)
     } catch (error) {
         console.log(error.message)
@@ -67,6 +67,7 @@ export const getPlayCost = async (req, res) => {
 }
 export const getDp = async (req, res) => {
     try {
+        console.log("I'm in here!", req.params.dp)
         const card = await Cards.find({"dp": `${req.params.dp}`})
         res.json(card)
     } catch (error) {
@@ -76,7 +77,7 @@ export const getDp = async (req, res) => {
 }
 export const getEvolutionCost = async (req, res) => {
     try {
-        const card = await Cards.find({"evolutioncost": `${req.params.evolutioncost}`})
+        const card = await Cards.find({"evolution_cost": `${req.params.evolutioncost}`})
         res.json(card)
     } catch (error) {
         console.log(error.message)
