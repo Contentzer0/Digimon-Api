@@ -29,6 +29,60 @@ export const getColor = async (req, res) => {
         res.status(500).json({error: error.message})
     }
 }
+export const getName = async (req, res) => {
+    try {
+        const card = await Cards.find({"name": `${req.params.name}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+export const getCardNumber = async (req, res) => {
+    try {
+        const card = await Cards.find({"cardnumber": `${req.params.cardnumber}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+export const getLevel = async (req, res) => {
+    try {
+        const card = await Cards.find({"level": `${req.params.level}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+export const getPlayCost = async (req, res) => {
+    try {
+        const card = await Cards.find({"playcost": `${req.params.playcost}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+export const getDp = async (req, res) => {
+    try {
+        const card = await Cards.find({"dp": `${req.params.dp}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+export const getEvolutionCost = async (req, res) => {
+    try {
+        const card = await Cards.find({"evolutioncost": `${req.params.evolutioncost}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
 export const createCharacter = async (req, res) => {
     try {
         const card = new Cards(req.body)
