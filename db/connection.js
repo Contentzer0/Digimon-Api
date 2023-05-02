@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 import chalk from "chalk";
-const MONGODB_URI = process.env.PROD_MONGDB || "mongodb://127.0.0.1:27017/digi-api"
+const MONGODB_URI = "mongodb+srv://Conykins:GdufoYMMkj9hJSPp@cluster0.aagb6gk.mongodb.net/test" || "mongodb://127.0.0.1:27017/digi-api"
 // this is for Model.findByIdAndUpdate method, specifically so that {new: true}
 mongoose.set("returnOriginal", false)
 mongoose.connect(MONGODB_URI).catch((error) => 
@@ -11,4 +11,6 @@ mongoose.connection.on("disconnected", () => {
 mongoose.connection.on("error", (error) => {
     console.error(chalk.red(`mongoDB connection error: ${error}`))
 })
+
+console.log(MONGODB_URI)
 export default mongoose.connection
