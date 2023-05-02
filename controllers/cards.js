@@ -84,11 +84,19 @@ export const getEvolutionCost = async (req, res) => {
         res.status(500).json({error: error.message})
     }
 }
-export const createCharacter = async (req, res) => {
+export const getCardRarity = async (req, res) => {
     try {
-        const card = new Cards(req.body)
-        await character.save()
-        res.status(201).json(card)
+        const card = await Cards.find({"cardrarity": `${req.params.cardrarity}`})
+        res.json(card)
+    } catch (error) {
+        console.log(error.message)
+        res.status(500).json({error: error.message})
+    }
+}
+export const getSetName = async (req, res) => {
+    try {
+        const card = await Cards.find({"set_name": `${req.params.setname}`})
+        res.json(card)
     } catch (error) {
         console.log(error.message)
         res.status(500).json({error: error.message})

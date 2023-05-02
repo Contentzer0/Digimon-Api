@@ -10,10 +10,12 @@ let Cards = new Schema({
     level: Number,
     play_cost: Number,
     evolution_cost: Number,
+    cardrarity: String,
     dp: Number,
     cardnumber: String,
     maineffect: String,
     sourceeffect: String,
+    set_name: String,
     image_url: String
 })
 export default mongoose.model("cards", Cards)
