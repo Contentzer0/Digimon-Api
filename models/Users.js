@@ -1,4 +1,4 @@
-
+import Cards from "./Structure.js"
 import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
@@ -11,11 +11,10 @@ const User = new Schema(
     },
     email: { type: String, required: true },
     password_digest: { type: String, required: true, select: false },
-    deck1: {type: Array},
-    deck2: {type: Array},
-    deck3: {type: Array},
-    deck4: {type: Array},
-    deck5: {type: Array},
+    deck1: {
+      type: Array,
+      ref: Cards
+    }
   },
   
   { timestamps: true }

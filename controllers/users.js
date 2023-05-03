@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
-
 import User from '../models/Users.js'
+import Cards from '../models/Structure.js'
 
 // for development purposes
 let SALT_ROUNDS = 11
@@ -76,10 +76,24 @@ export const verify = async (req, res) => {
     const payload = jwt.verify(token, TOKEN_KEY)
     if (payload) {
       res.json(payload)
+      console.log(payload)
     }
   } catch (error) {
     console.log(error.message)
     res.status(401).send('Not Authorized')
+  }
+}
+export const addDeck = async (req, res) => {
+  try {
+    let card = Cards.findOne({_id: card._id})
+    let user = User.findOne({email: email})
+    user.deck1.push(card)
+    user.save()
+    
+    
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).send('No Access')
   }
 }
 
