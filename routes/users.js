@@ -3,7 +3,7 @@ import * as controllers from '../controllers/users.js'
 
 const router = Router()
 router.get('/deck1/:userId', controllers.deck1)
-router.put('quantity', controllers.changeQuantity)
+router.put('/updateQuantity', controllers.changeQuantity)
 router.post('/sign-up', controllers.signUp)
 router.post('/addCard', controllers.addCard)
 router.post('/deleteCard', controllers.deleteUserCard)
