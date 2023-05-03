@@ -16,6 +16,7 @@ let Cards = new Schema({
     maineffect: String,
     sourceeffect: String,
     set_name: String,
-    image_url: String
+    image_url: String,
+    quantity: Number
 })
 export default mongoose.model("cards", Cards)
