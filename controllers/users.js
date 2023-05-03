@@ -85,24 +85,31 @@ export const verify = async (req, res) => {
 }
 export const addCard = async (req, res) => {
   try {
-    let card = await Cards.findOne({_id: card._id})    
-    let user = await User.findOne({email: email})
-    user.deck1.push(...card)
-    user.save()
+    const {cardId, userId} = req.body
+
+    let user = await User.findByIdAndUpdate(
+      userId, 
+      {$push: {"deck1": cardId}}
+    )
     
+    res.status(201).json(user)
     
   } catch (error) {
     console.log(error.message)
     res.status(500).send('No Access')
   }
 }
-export const deleteCard = async (req, res) => {
+export const deleteUserCard = async (req, res) => {
   try {
-    let card = await Cards.findOne({_id: card._id})    
-    let user = await User.findOne({email: email})
-    user.deck1.delete(card)
-    user.save()
+
+    const {cardId, userId} = req.body
+
+    let user = await User.findByIdAndUpdate(
+      userId, 
+      {$pull: {"deck1": cardId}}
+    )
     
+    res.status(201).json(user)
     
   } catch (error) {
     console.log(error.message)
@@ -111,7 +118,9 @@ export const deleteCard = async (req, res) => {
 }
 export const deck1 = async (req, res) => {
   try {
-      const deck = await User.find({"deck1": `${req.params.deck1}`})
+      const deck = await User.findById(req.params.userId).select(
+        'username deck1'
+      ).populate("deck1")
       res.json(deck)
   } catch (error) {
       console.log(error.message)

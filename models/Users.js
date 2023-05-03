@@ -11,10 +11,7 @@ const User = new Schema(
     },
     email: { type: String, required: true },
     password_digest: { type: String, required: true, select: false },
-    deck1: {
-      type: Array,
-      ref: Cards
-    }
+    deck1: [{type: Schema.Types.ObjectId, ref: "cards"}]
   },
   
   { timestamps: true }
