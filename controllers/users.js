@@ -96,5 +96,14 @@ export const addDeck = async (req, res) => {
     res.status(500).send('No Access')
   }
 }
+export const deck1 = async (req, res) => {
+  try {
+      const deck = await User.find({"deck1": `${req.params.deck1}`})
+      res.json(deck)
+  } catch (error) {
+      console.log(error.message)
+      res.status(500).json({error: error.message})
+  }
+}
 
 export const changePassword = async (req, res) => {}
