@@ -83,11 +83,24 @@ export const verify = async (req, res) => {
     res.status(401).send('Not Authorized')
   }
 }
-export const addDeck = async (req, res) => {
+export const addCard = async (req, res) => {
   try {
     let card = await Cards.findOne({_id: card._id})    
     let user = await User.findOne({email: email})
     user.deck1.push(...card)
+    user.save()
+    
+    
+  } catch (error) {
+    console.log(error.message)
+    res.status(500).send('No Access')
+  }
+}
+export const deleteCard = async (req, res) => {
+  try {
+    let card = await Cards.findOne({_id: card._id})    
+    let user = await User.findOne({email: email})
+    user.deck1.delete(card)
     user.save()
     
     
