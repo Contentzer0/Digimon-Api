@@ -85,9 +85,9 @@ export const verify = async (req, res) => {
 }
 export const addDeck = async (req, res) => {
   try {
-    let card = Cards.findOne({_id: card._id})
-    let user = User.findOne({email: email})
-    user.deck1.push(card)
+    let card = await Cards.findOne({_id: card._id})    
+    let user = await User.findOne({email: email})
+    user.deck1.push(...card)
     user.save()
     
     
