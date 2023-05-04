@@ -99,22 +99,23 @@ export const addCard = async (req, res) => {
     res.status(500).send('No Access')
   }
 }
-export const deleteUserCard = async (req, res) => {
-  try {
-
-    const {cardId, userId} = req.body
-
-    let user = await User.findOneAndUpdate(
-      userId, 
-      {$pull: {deck1: cardId}}
-    )
-    
-    res.status(201).json(user)
-    
-  } catch (error) {
-    console.log(error.message)
-    res.status(500).send('No Access')
-  }
+export const deleteUserCard = () => {
+  app.put("/deleteCard/:cardInstanceId", async (req, res) => {
+    try {
+      const { userId, cardId } = req.body;
+      const { cardInstanceId } = req.params;
+      const deletedCard = await CardInstance.destroy({
+        where: { id: cardInstanceId, userId: userId },
+      });
+      if (deletedCard) {
+        res.status(200).json({ message: "Card deleted successfully" });
+      } else {
+        res.status(404).json({ message: "Card not found" });
+      }
+    } catch (err) {
+      res.status(500).json({ message: "Server error", error: err });
+    }
+  });
 }
 export const deck1 = async (req, res) => {
   try {
