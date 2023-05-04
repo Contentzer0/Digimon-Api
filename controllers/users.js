@@ -104,7 +104,7 @@ export const deleteUserCard = async (req, res) => {
 
     const {cardId, userId} = req.body
 
-    let user = await User.findByIdAndDelete(
+    let user = await User.findByIdAndUpdate(
       userId, 
       {$pull: {deck1: cardId}}
     )
